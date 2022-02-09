@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import logoWallet from '../images/logoWallet.png';
 
 class Header extends React.Component {
@@ -22,6 +23,10 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  emailLogin: PropTypes.string,
+}.isRequired;
 
 const mapStateToProps = ({ user }) => ({
   emailLogin: user.email,
