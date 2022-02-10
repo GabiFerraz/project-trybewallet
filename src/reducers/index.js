@@ -7,3 +7,5 @@ import wallet from './wallet';
 const rootReducer = combineReducers({ user, wallet });
 
 export default rootReducer;
+
+// Fiz a combinação dos meus reducers, passando eles desestruturados no meu parâmetro. Importei o que precisava e usei com os nomes pedidos.
