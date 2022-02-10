@@ -23,7 +23,8 @@ class ExpenseTable extends React.Component {
         </thead>
         <tbody>
           { expenses.map((expense) => {
-            const { id, description, tag, method, value, currency, exchangeRates } = expense;
+            const { id,
+              description, tag, method, value, currency, exchangeRates } = expense;
             return (
               <tr key={ id }>
                 <td>{ description }</td>
