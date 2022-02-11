@@ -1,6 +1,7 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 // Importei o nome do meu type criado na minha action:
-import { CURRENCIES_WALLET_TYPE, EXPENSES_WALLET_TYPE, LOADING } from '../actions';
+import { CURRENCIES_WALLET_TYPE,
+  EXPENSES_WALLET_TYPE, LOADING, DELETE_EXPENSES_TYPE } from '../actions';
 
 // Criei o meu estado inicial conforme pedido no readme com o currencies e o expenses como arrays vazios, pois são as informações que eu preciso salvar no estado global, e depois adicionei o loading que fiz na action e usei no thunk iniciando como falso:
 const INITIAL_STATE = {
@@ -22,6 +23,11 @@ function wallet(state = INITIAL_STATE, action) {
       ...state,
       expenses: [...state.expenses,
         { ...action.othersStates, exchangeRates: action.returnAPI }],
+    };
+  case DELETE_EXPENSES_TYPE:
+    return {
+      ...state,
+      expenses: state.expenses.filter((expense) => expense.id !== action.id),
     };
   case LOADING:
     return {

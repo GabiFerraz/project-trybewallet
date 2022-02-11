@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { deleteExpensesWalletAction } from '../actions';
 
 class ExpenseTable extends React.Component {
   render() {
-    const { walletData: { expenses } } = this.props;
-    console.log(expenses);
+    const { walletData: { expenses }, deleteExpense } = this.props;
+
     return (
       <table>
         <thead>
@@ -35,6 +36,15 @@ class ExpenseTable extends React.Component {
                 <td>{ Number(exchangeRates[currency].ask).toFixed(2) }</td>
                 <td>{ (value * Number(exchangeRates[currency].ask)).toFixed(2) }</td>
                 <td>Real</td>
+                <td>
+                  <button
+                    type="button"
+                    data-testid="delete-btn"
+                    onClick={ () => deleteExpense(id) }
+                  >
+                    Excluir
+                  </button>
+                </td>
               </tr>
             );
           })}
@@ -45,11 +55,17 @@ class ExpenseTable extends React.Component {
 }
 
 ExpenseTable.propTypes = {
-  walletData: PropTypes.func,
+  walletData: PropTypes.object,
+  deleteExpense: PropTypes.func,
 }.isRequired;
 
+// no mapState eu trago o retorno do meu reducer
 const mapStateToProps = ({ wallet }) => ({
   walletData: wallet,
 });
 
-export default connect(mapStateToProps)(ExpenseTable);
+const mapDispatchToProps = (dispatch) => ({
+  deleteExpense: (id) => dispatch(deleteExpensesWalletAction(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseTable);
