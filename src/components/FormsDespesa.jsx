@@ -5,14 +5,17 @@ import { expensesThunk } from '../actions';
 import style from './FormsDespesa.module.css';
 import NewForm from './NewForm';
 
-const LENGTH_MOEDAS = 3;
+// const LENGTH_MOEDAS = 3;
 
 class FormsDespesa extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      currencies: [],
+      currencies: ['USD',
+        'CAD',
+        'EUR',
+        'GBP', 'ARS', 'BTC', 'LTC', 'JPY', 'CHF', 'AUD', 'CNY', 'ILS', 'ETH', 'XRP'],
       methodPay: ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'],
       optionsTag: ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'],
       id: 0,
@@ -31,10 +34,11 @@ class FormsDespesa extends React.Component {
   fetchAPI = async () => {
     const request = await fetch('https://economia.awesomeapi.com.br/json/all');
     const requestJSON = await request.json();
-    const arrayCurrencies = Object.keys(requestJSON);
-    this.setState({
-      currencies: arrayCurrencies.filter((moeda) => moeda.length === LENGTH_MOEDAS),
-    });
+    console.log(requestJSON);
+    // const arrayCurrencies = Object.keys(requestJSON);
+    // this.setState({
+    //   currencies: arrayCurrencies.filter((moeda) => moeda.length === LENGTH_MOEDAS),
+    // });
   }
 
   handleChange = ({ target }) => {

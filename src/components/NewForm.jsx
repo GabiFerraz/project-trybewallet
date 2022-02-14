@@ -4,32 +4,35 @@ import PropTypes from 'prop-types';
 import { addEditNewFormAction, editStateNewFormAction } from '../actions';
 import style from './FormsDespesa.module.css';
 
-const LENGTH_MOEDAS = 3;
+// const LENGTH_MOEDAS = 3;
 
 class NewForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currencies: [],
+      currencies: ['USD',
+        'CAD',
+        'EUR',
+        'GBP', 'ARS', 'BTC', 'LTC', 'JPY', 'CHF', 'AUD', 'CNY', 'ILS', 'ETH', 'XRP'],
       methodPay: ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'],
       optionsTag: ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'],
       ...props.expenseEdit,
     };
   }
 
-  componentDidMount() {
-    this.fetchAPI();
-  }
+  // componentDidMount() {
+  //   this.fetchAPI();
+  // }
 
-  fetchAPI = async () => {
-    const request = await fetch('https://economia.awesomeapi.com.br/json/all');
-    const requestJSON = await request.json();
-    const arrayCurrencies = Object.keys(requestJSON);
-    this.setState({
-      currencies: arrayCurrencies.filter((moeda) => moeda.length === LENGTH_MOEDAS),
-    });
-  }
+  // fetchAPI = async () => {
+  //   const request = await fetch('https://economia.awesomeapi.com.br/json/all');
+  //   const requestJSON = await request.json();
+  //   const arrayCurrencies = Object.keys(requestJSON);
+  //   this.setState({
+  //     currencies: arrayCurrencies.filter((moeda) => moeda.length === LENGTH_MOEDAS),
+  //   });
+  // }
 
   handleChange = ({ target }) => {
     this.setState({
