@@ -1,0 +1,36 @@
+.table {
+  border-collapse: collapse;
+  font-size: large;
+  text-align: center;
+  width: 100vw;
+}
+
+.table thead {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  height: 10vh;
+}
+
+.table tbody td {
+  padding-top: 20px;
+}
+
+.table tbody button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  transition: 0.4s;
+}
+
+.table tbody button:hover {
+  opacity: 0.6;
+}
+
+.table tbody button:nth-child( odd ) {
+  color: #7db200;
+}
+
+.table tbody button:nth-child( even ) {
+  color: red;
+}

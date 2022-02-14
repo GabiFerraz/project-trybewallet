@@ -1,0 +1,22 @@
+.header {
+  align-items: center;
+  display: flex;
+  font-size: 20px;
+  height: 10vh;
+  justify-content: space-between;
+  margin-left: 10px;
+  width: 100vw;
+}
+
+.header .dadSection {
+  display: flex;
+  justify-content: space-between;
+  width: 40vw;
+}
+
+.header .expenseSection {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  padding-right: 40px;
+}
