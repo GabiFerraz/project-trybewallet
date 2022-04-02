@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { FaTrashAlt, FaEdit } from 'react-icons/fa';
+import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { deleteExpensesWalletAction,
   editExpensesWalletAction, editStateNewFormAction } from '../actions';
 import style from './ExpenseTable.module.css';
@@ -49,16 +49,14 @@ class ExpenseTable extends React.Component {
                       editNewForm();
                     } }
                   >
-                    Editar
-                    {/* <FaEdit /> */}
+                    <FaEdit />
                   </button>
                   <button
                     type="button"
                     data-testid="delete-btn"
                     onClick={ () => deleteExpense(id) }
                   >
-                    Excluir
-                    {/* <FaTrashAlt /> */}
+                    <FaTrashAlt />
                   </button>
                 </td>
               </tr>
